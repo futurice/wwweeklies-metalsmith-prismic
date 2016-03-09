@@ -4,9 +4,8 @@
     title="Author"
   }}
   <body>
-    {{> debug }}
     {{> links }}
-    <main class="main">
+    <main class="main author">
     {{#with prismic.author.results.0.data}}
       <section>
         {{{ name.html }}}

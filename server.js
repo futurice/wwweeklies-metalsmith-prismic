@@ -13,7 +13,6 @@ var beautify = require('metalsmith-beautify');
 var ignore = require('metalsmith-ignore');
 var layouts = require('metalsmith-layouts');
 var markdown = require('metalsmith-markdown');
-var s3 = require('metalsmith-s3');
 var sass = require('metalsmith-sass');
 
 var metalsmithPrismicServer = require('metalsmith-prismic-server');
@@ -38,9 +37,6 @@ var config = {
    *
    * Note: the linkResolver does not affect single prismic files
    *
-   * *TEMPLATE* adjust this example function to suit your prismic content and folder structures
-   * *TEMPLATE* If omitted, links and paths will be generated with the default format of:
-   * *TEMPLATE* "/<document.type>/<document.id>/<document.slug>"
    */
   prismicLinkResolver (ctx, doc) {
     if (doc.isBroken) {
@@ -50,33 +46,17 @@ var config = {
     // For prismic collection files append 'index.html'
     // Leave it out for prismic link paths
     var filename = doc.data ? 'index.html' : '';
-
-    var language = utils.getLanguageFromTags(doc);
-    if (language) {
-      // *TEMPLATE-i18n* Use this linkResolver to generate i18n-links based on languages tags defined in Prismic
-      // *TEMPLATE-i18n* E.g. The paths for each blog-post in the fi/i18n-blog-post.md collection will be generated as:
-      // *TEMPLATE-i18n*      /fi/i18n-blog-post/mun-toka-blogipostaus/index.html
-      // *TEMPLATE-i18n* Note: if all documents in prismic have a language tag, the root needs to handled manually
-      switch (doc.type) {
-        case 'i18n-example':
-          return '/' + language + '/' + filename;
-        default:
-          return '/' + language + '/' + doc.type + '/' +  (doc.uid || doc.slug) + '/' + filename;
-      }
-    } else {
-      switch (doc.type) {
-        case 'home':
-          return '/' + filename;
-        default:
-          return '/' + doc.type + '/' +  (doc.uid || doc.slug) + '/' + filename;
-      }
+    switch (doc.type) {
+      case 'home':
+        return '/' + filename;
+      default:
+        return '/' + doc.type + '/' +  (doc.uid || doc.slug) + '/' + filename;
     }
   },
 
   // Metalsmith plugins passed to metalsmithPrismicServer
   plugins: {
     common: [
-      // Render markdown files to html
       markdown(),
       // Register handlebars helpers
       handlebarsHelpers(),
@@ -111,13 +91,7 @@ var config = {
         '**/*.scss'
       ])
     ],
-    deploy: [
-      s3({
-        action: 'write',
-        bucket: 'metalsmith-prismic-template.futurice.com',
-        region: 'eu-west-1'
-      })
-    ]
+    deploy: []
   }
 };
 

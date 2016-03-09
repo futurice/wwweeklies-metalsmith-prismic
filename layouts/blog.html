@@ -4,11 +4,12 @@
     title="Blog"
   }}
   <body>
-    {{> debug }}
-    <main class="main">
+    {{> links }}
+    <main class="main blog-posts">
+      <h1>Blog posts</h1>
     {{#each prismic.blogposts.results}}
       <section>
-        <a href="{{ slug }}">{{{ data.title.html }}}</a>
+        <a href="{{ slug }}">{{{ striptags data.title.html }}}</a>
       </section>
     {{/each}}
     </main>
