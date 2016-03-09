@@ -23,7 +23,7 @@ body {
 body > ul {
     display: flex;
     flex-direction: row;
-    margin: 1em;
+    margin: 3em;
     padding: 1em;
     border-bottom: 1px dashed rgba(0,0,0,0.3);
 
@@ -47,4 +47,31 @@ a:hover {
 // Content
 main {
     width: 80%;
+    max-width: 800px;
+
+    img {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+// Home page
+main.home {
+    text-align: center;
+
+    img {
+        mix-blend-mode: multiply;
+        padding: 1em;
+    }
+}
+
+main.blog-post {
+    .author {
+        &:before {
+            content: '—';
+        }
+
+        font-style: italic;
+        opacity: 0.8;
+    }
 }
