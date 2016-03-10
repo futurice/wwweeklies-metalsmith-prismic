@@ -9,7 +9,9 @@
       <h1>Blog posts</h1>
     {{#each prismic.blogposts.results}}
       <section>
-        <a href="{{ slug }}">{{{ striptags data.title.html }}}</a>
+        <p>
+          <a href="{{ uid }}">{{{ striptags data.title.html }}}</a>
+        </p>
       </section>
     {{/each}}
     </main>
