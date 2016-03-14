@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Posts</title>
+
+  <link rel="stylesheet" href="../.././style/base.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+  <ul>
+    <li>
+      <a href="../.././">Home</a>
+    </li>
+    <li>
+      <a href="../.././blog-post/">Blog posts</a>
+    </li>
+  </ul>
+  <main class="main blog-post">
+    <section>
+      <h1>Prismic, Metalsmith and us</h1>
+
+      <a href="../.././author/aeirola/" class="author">
+        <span>Axel Eirola</span>
+      </a>
+
+      <h2>Static websites?</h2>
+      <p>In case you missed Eemeli Kantolas presentation about Zalando STUPS' use of Metalsmith and Prismic.io last summer, and aren't yet convinved that static websites are really handy, here are some points:</p>
+      <ul>
+        <li>Nice performance</li>
+        <li>Really web scale</li>
+        <li>Easy caching</li>
+        <li>Simplified hosting</li>
+        <li>Quite robust</li>
+        <li>Reduced attack surface</li>
+      </ul>
+      <div data-oembed="undefined" data-oembed-type="embed" data-oembed-provider="undefined">
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">Static sites are the fixies of the Internet.</p>&mdash; Paul Graham (@paulg) <a href="https://twitter.com/paulg/status/402205795552489472">November 17, 2013</a></blockquote>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+      <h3><a href="https://prismic.io/">Prismic.io</a>?</h3>
+      <p>An cloud hosted CMS that only handles the content part.</p>
+      <p>In it's essence, it is a customizeable web form and database with an API.</p>
+      <p>Well, it also provides libraries that generate OK-ish HTML from the content.</p>
+      <p>Prismic.io brings the content, you bring the templates and styles.</p>
+      <h3><a href="http://www.metalsmith.io/">Metalsmith</a>?</h3>
+      <p>A Node.js tool for building static websites with a versitile plugin ecosystem.</p>
+      <p>Plugin support for all templating and styling languages, and fetching of content from Prismic.io, obviously.</p>
+      <p>Nice and simple and hackable.</p>
+      <h3>Backend?</h3>
+      <p>You don't really need your own backend for most of the stuff.</p>
+      <p>Just replace it with some cloud hosted services.</p>
+      <ul>
+        <li><strong>Forms</strong>: Use <a href="http://formspree.io/">Formspree</a></li>
+        <li><strong>Search</strong>: Use <a href="http://lunrjs.com/">Lunr</a> for client-side search, or <a href="https://community.algolia.com/instantsearch.js/">Algolia</a></li>
+        <li><strong>Comments</strong>: Use <a href="https://publishers.disqus.com/">Discuss</a></li>
+        <li><strong>Reviews</strong>: Use <a href="http://www.rating-system.com/">Rating System</a></li>
+      </ul>
+      <h2>Making it easy</h2>
+      <p>Many projects are opting for these static website stacks.</p>
+      <p>We've created a common build server for buliding static websites from Prismic.io using Metalsmith.</p>
+      <p>And a project template to match!</p>
+      <h3><a href="https://github.com/futurice/metalsmith-prismic-server">Metalsmith-prismic-server</a></h3>
+      <p><em>Developed by David Sheldrick</em></p>
+      <p>A Node.js server that you can run on Heroku free-tier to build your site whenever changes are published in Prismic.io.</p>
+      <p>Also provides rendering previews for Prismic preview functionality, and a handy devserver for when writing the templates.</p>
+      <h3><a href="https://github.com/futurice/metalsmith-prismic-template">Metalsmith-prismic-template</a></h3>
+      <p><em>Compiled by Kiia Korpi</em></p>
+      <p>An opinionated project template that includes best practice guides and basic setup for running metalsmith-prismic-server.</p>
+      <ul>
+        <li>Handlebars templates</li>
+        <li>Sass styles</li>
+        <li>Normalize.css</li>
+        <li>Autoprefixer</li>
+        <li>Heroku deployment</li>
+        <li>CI pipeline</li>
+        <li>S3 publishing</li>
+      </ul>
+      <h2>Demo time!</h2>
+      <p>If we have time, we can look at how it works in reality.</p>
+      <h3>Dev server</h3>
+      <p>The development mode of metalmiths-prismic-server has nice autoreloading features.</p><pre>npm run dev</pre>
+      <h3>Prismic.io</h3>
+      <p>Prismic has some nice content editing features.</p>
+      <ul>
+        <li><a href="https://wwweeklies.prismic.io/documents/Vt_eoigAAPYmkG6q*VuFKlygAAIUY114G/">Link to editor for this page</a></li>
+      </ul>
+      <h3>Preview server</h3>
+      <p>It also provides a preview feature where you can check how your changes look before publishing.</p>
+      <ul>
+        <li><a href="https://wwweeklies.prismic.io/settings/previews/">Link to preview settings</a></li>
+      </ul>
+      <h3>Web hooks</h3>
+      <p>All changes are pushed via a hook to the build server.</p>
+      <ul>
+        <li><a href="https://wwweeklies.prismic.io/settings/webhooks/">Link to web hook settings</a></li>
+        <li><a href="https://dashboard.heroku.com/apps/wwweeklies-metalsmith-prismic/logs">Link to Heroku logs</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+
+</html>
