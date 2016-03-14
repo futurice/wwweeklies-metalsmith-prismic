@@ -91,7 +91,21 @@ var config = {
         '**/*.scss'
       ])
     ],
-    deploy: []
+    deploy: [
+      function (files, metalsmith, done) {
+        for (var fileName in files) {
+          var file = files[fileName];
+          var pathDepth = (fileName.match(/\//g) || []).length;
+          var pathPrefix = '.';
+          while (pathDepth-- > 0) {
+            pathPrefix = '../' + pathPrefix
+          }
+          file.contents = new Buffer(file.contents.toString().replace(/href="\//g, 'href="' + pathPrefix + '/'));
+        }
+
+        done();
+      }
+    ]
   }
 };
 
@@ -105,7 +119,7 @@ function run() {
       metalsmithPrismicServer.prod(config);
       break;
     case 'build':
-      metalsmithPrismicServer.build(config, []);
+      metalsmithPrismicServer.build(config, ['deploy'], () => null);
       break;
     default:
       console.error(`invalid command '${argv[2]}'`);

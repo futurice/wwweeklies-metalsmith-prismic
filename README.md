@@ -82,3 +82,29 @@ TODO overview image
 * `server.js`: Server and build logic with metalsmith-plugins
 
 TODO license
+
+## Deploy to GitHub pages
+
+*TODO: Make metalsmith plugin?*
+
+``` bash
+# Build content
+PRISMIC_URL=https://wwweeklies.prismic.io/api npm run build
+
+# Prepare repo
+rm -rf deploy/gh-pages
+git clone github.com:futurice/wwweeklies-metalsmith-prismic.git deploy/gh-pages
+cd deploy/gh-pages
+git checkout --orphan gh-pages
+git rm -rf .
+
+# Add content
+cp -r ../../builds/master/ .
+git add .
+git commit -m "Update github pages"
+
+# Push content
+git push origin gh-pages --force
+
+cd ../..
+```
