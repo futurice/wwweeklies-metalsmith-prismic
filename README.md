@@ -17,7 +17,7 @@ An opinionated, bare bones template for static site generation from [prismic.io]
   * [Generated example site deployed to S3](http://metalsmith-prismic-template.futurice.com/)
   * [Published content also running in Heroku](https://metalsmith-prismic.herokuapp.com/builds/preview/master/)
 
-TODO overview image
+![overview architecture](docs/architecture.png)
 
 ## How to use this template
 
@@ -36,7 +36,7 @@ TODO overview image
     * Preview url: https://{HEROKU_APP_NAME}.herokuapp.com/preview
   * Setup webhooks in Prismic settings
     * URL: https://{HEROKU_APP_NAME}.herokuapp.com/build
-    * Secret: {[Generate a random 'secret'](https://www.google.com/q=random+key+generator)}
+    * Secret: {[Generate a random 'secret'](https://www.google.com/search?q=random+key+generator)}
   * Add tokens to `.env`
     * `PRISMIC_URL=https://{PRISMIC_APP_NAME}.prismic.io/api`
     * `PRISMIC_SECRET={PRISMIC_WEBHOOK_SECRET}`
@@ -81,7 +81,15 @@ TODO overview image
 * `utils/`: Utility functions
 * `server.js`: Server and build logic with metalsmith-plugins
 
-TODO license
+### Alternative deployments
+
+ * Azure Storage
+   * Replace `metalsmith-s3` with [`metalsmith-azure-storage`](https://github.com/futurice/metalsmith-azure-storage) in `package.json` and `server.js`
+   * Follow instructions in [documentation](https://github.com/futurice/metalsmith-azure-storage) on how to configure the Azure Storeage plugin
+
+## License and Credits
+
+Metalsmith-prismic-template is licensed with [MIT License](LICENSE.md). It was developed by Futurice in co-operation with our customers [Finavia](http://www.finavia.fi/) and [Clear Funding](http://clearfunding.com/).
 
 ## Deploy to GitHub pages
 

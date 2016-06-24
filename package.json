@@ -2,15 +2,15 @@
   "name": "metalsmith-prismic-template",
   "version": "0.0.1",
   "description": "Metalsmith prismic template",
-  "license": "TODO",
-  "author": "Futurice",
+  "license": "MIT",
+  "author": "Futurice Ltd",
   "repository": {
     "type": "git",
     "url": "https://github.com/futurice/metalsmith-prismic-template.git"
   },
   "scripts": {
     "install": "npm install metalsmith-prismic-server",
-    "test": "echo \"No tests needed\"",
+    "test": "node server.js build",
     "dev": "node server.js dev",
     "build": "node server.js build",
     "start": "node server.js prod"
